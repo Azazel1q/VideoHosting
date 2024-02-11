@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('index');
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/video', [App\Http\Controllers\VideoController::class, 'index'])->name('video-page');
+Route::post('/video/getVideo', [App\Http\Controllers\VideoController::class, 'getVideo'])->name('getVideo');
